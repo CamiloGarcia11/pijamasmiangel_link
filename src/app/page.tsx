@@ -104,7 +104,7 @@ export default function Home() {
           </motion.div>
 
           {/* Links List with generous, aesthetic separation */}
-          <div className="flex flex-col gap-5 sm:gap-6 pt-1">
+          <div className="flex flex-col gap-7 sm:gap-8 pt-2">
             {LINKS_DATA.map((link, idx) => (
               <LinkCard key={link.id} link={link} index={idx} />
             ))}

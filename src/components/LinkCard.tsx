@@ -85,11 +85,11 @@ export default function LinkCard({ link, index }: LinkCardProps) {
         stiffness: 260,
         damping: 20,
       }}
-      className="relative w-full"
+      className="relative w-full pt-3 pb-1"
     >
       {/* Top Floating Badge if highlighted */}
       {link.badge && (
-        <div className="absolute -top-3.5 left-6 z-20">
+        <div className="absolute top-0.5 left-6 z-20">
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: [1, 1.05, 1] }}
