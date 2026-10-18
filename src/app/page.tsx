@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import BackgroundWatermark from "@/components/BackgroundWatermark";
 import HeaderProfile from "@/components/HeaderProfile";
 import TickerBar from "@/components/TickerBar";
+import PhotoCarousel from "@/components/PhotoCarousel";
 import LinkCard, { LinkItem } from "@/components/LinkCard";
 import BrandFeatures from "@/components/BrandFeatures";
 import Footer from "@/components/Footer";
@@ -70,49 +71,54 @@ export default function Home() {
         </div>
 
         {/* Dynamic Continuous Luxury Ribbon Ticker */}
-        <div className="w-full my-2">
+        <div className="w-full my-3">
           <TickerBar />
         </div>
 
-        {/* Main Content Container: Links & Interactivity */}
-        <div className="w-full max-w-md mx-auto px-4 py-4 flex flex-col gap-4">
+        {/* Main Content Container: Spacious, Aesthetic & Airy */}
+        <div className="w-full max-w-md mx-auto px-5 py-6 flex flex-col gap-6">
+          {/* Aesthetic Auto-play Photo Carousel */}
+          <PhotoCarousel />
+
           {/* Quick Notice Banner / Attention Grabber */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="w-full rounded-2xl bg-white/70 backdrop-blur-sm border border-brand-charcoal/30 p-3 flex items-center justify-between shadow-[0_2px_0_#1E1E1E]"
+            className="w-full rounded-2xl bg-white/80 backdrop-blur-sm border border-brand-charcoal/30 py-3.5 px-4 flex items-center justify-between shadow-[0_2px_0_#1E1E1E]"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <span className="flex h-2.5 w-2.5 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
               </span>
-              <p className="text-[11px] font-sans font-bold uppercase tracking-wider text-brand-charcoal">
-                ¡Nueva Colección Rib Premium Disponible!
+              <p className="text-[12px] font-sans font-bold uppercase tracking-wider text-brand-charcoal">
+                ¡Nueva Colección Rib Premium! 🎀
               </p>
             </div>
-            <div className="flex items-center text-amber-500">
+            <div className="flex items-center gap-1 text-amber-500">
               <Star className="w-3.5 h-3.5 fill-current" />
               <Star className="w-3.5 h-3.5 fill-current" />
               <Star className="w-3.5 h-3.5 fill-current" />
             </div>
           </motion.div>
 
-          {/* Links List */}
-          <div className="flex flex-col gap-3.5">
+          {/* Links List with generous, aesthetic separation */}
+          <div className="flex flex-col gap-5 sm:gap-6 pt-1">
             {LINKS_DATA.map((link, idx) => (
               <LinkCard key={link.id} link={link} index={idx} />
             ))}
           </div>
 
           {/* Fabric & Brand Features Accordion */}
-          <BrandFeatures />
+          <div className="pt-2">
+            <BrandFeatures />
+          </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full mt-4">
         <Footer />
       </div>
 

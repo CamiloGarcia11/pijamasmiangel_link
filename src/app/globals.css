@@ -20,7 +20,7 @@ html {
 body {
   color: #1E1E1E;
   background-color: #FDE2E8;
-  font-family: var(--font-montserrat), sans-serif;
+  font-family: var(--font-quicksand), var(--font-montserrat), sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
   min-height: 100dvh;

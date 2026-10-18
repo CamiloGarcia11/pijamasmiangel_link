@@ -22,8 +22,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "serif"],
-        sans: ["var(--font-montserrat)", "sans-serif"],
+        serif: ["var(--font-comfortaa)", "var(--font-playfair)", "serif"],
+        sans: ["var(--font-quicksand)", "var(--font-montserrat)", "sans-serif"],
+        cutie: ["var(--font-comfortaa)", "cursive", "sans-serif"],
+        sweet: ["var(--font-quicksand)", "sans-serif"],
       },
       animation: {
         "float-slow": "float 8s ease-in-out infinite",

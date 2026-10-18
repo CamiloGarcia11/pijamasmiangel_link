@@ -1,6 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Playfair_Display, Montserrat, Comfortaa, Quicksand } from "next/font/google";
 import "./globals.css";
+
+const comfortaa = Comfortaa({
+  subsets: ["latin"],
+  variable: "--font-comfortaa",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  variable: "--font-quicksand",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -59,7 +73,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${playfair.variable} ${montserrat.variable}`}>
+    <html
+      lang="es"
+      className={`${comfortaa.variable} ${quicksand.variable} ${playfair.variable} ${montserrat.variable}`}
+    >
       <body className="antialiased min-h-screen selection:bg-brand-charcoal selection:text-white">
         {children}
       </body>

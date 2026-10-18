@@ -11,32 +11,32 @@ interface HeaderProfileProps {
 
 export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
   return (
-    <header className="relative w-full flex flex-col items-center text-center pt-6 pb-4 px-4 select-none">
+    <header className="relative w-full flex flex-col items-center text-center pt-8 pb-4 px-5 select-none">
       {/* Top action bar: Share button */}
-      <div className="w-full max-w-md flex justify-end mb-2">
+      <div className="w-full max-w-md flex justify-end mb-3">
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
           onClick={onOpenShare}
           aria-label="Compartir perfil"
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border-[1.5px] border-brand-charcoal text-brand-charcoal text-xs font-sans font-bold uppercase tracking-wider shadow-[0_2px_0_#1E1E1E] transition-all hover:bg-white"
+          className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border-[1.5px] border-brand-charcoal text-brand-charcoal text-xs font-sans font-bold uppercase tracking-wider shadow-[0_2px_0_#1E1E1E] transition-all hover:bg-white"
         >
           <Share2 className="w-3.5 h-3.5" />
           <span>Compartir</span>
         </motion.button>
       </div>
 
-      {/* Profile Avatar with double ring and subtle breathing animation */}
+      {/* Profile Avatar with double ring and sweet breathing animation */}
       <div className="relative mb-4">
         {/* Pulsing ambient halo ring */}
-        <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-brand-pinkMuted via-white to-brand-pinkSoft opacity-75 blur-md animate-pulse-subtle" />
+        <div className="absolute -inset-2.5 rounded-full bg-gradient-to-r from-brand-pinkMuted via-white to-brand-pinkSoft opacity-85 blur-md animate-pulse-subtle" />
 
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", damping: 18, stiffness: 220 }}
           whileHover={{ scale: 1.05, rotate: 2 }}
-          className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white border-[2.5px] border-brand-charcoal shadow-[0_6px_0_#1E1E1E] p-1 flex items-center justify-center overflow-hidden"
+          className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white border-[2.5px] border-brand-charcoal shadow-[0_6px_0_#1E1E1E] p-1.5 flex items-center justify-center overflow-hidden"
         >
           <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
             <Image
@@ -61,7 +61,7 @@ export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
           <CheckCircle className="w-4 h-4 text-emerald-400 fill-emerald-400" />
         </motion.div>
 
-        {/* Small floating heart badge */}
+        {/* Floating bow badge */}
         <motion.div
           animate={{
             y: [-3, 3, -3],
@@ -72,56 +72,56 @@ export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -top-1 -left-2 bg-white text-rose-500 p-1.5 rounded-full border border-brand-charcoal shadow-[0_2px_0_#1E1E1E]"
+          className="absolute -top-1 -left-2 bg-white text-rose-500 p-1.5 rounded-full border border-brand-charcoal shadow-[0_2px_0_#1E1E1E] text-xs flex items-center justify-center"
         >
-          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+          🎀
         </motion.div>
       </div>
 
-      {/* Main Title: Bodoni / Didone / Playfair Display high contrast serif */}
+      {/* Main Title: Sweet & Cutie Typography */}
       <motion.div
         initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.15, duration: 0.5 }}
       >
-        <div className="flex items-center justify-center gap-2 mb-1">
-          <span className="h-[1px] w-6 bg-brand-charcoal/40" />
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-brand-foliage">
-            Colección Exclusiva
+        <div className="flex items-center justify-center gap-2 mb-1.5">
+          <span className="h-[1px] w-5 bg-brand-charcoal/30" />
+          <span className="text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-brand-foliage">
+            Colección Sweet Dreams
           </span>
-          <span className="h-[1px] w-6 bg-brand-charcoal/40" />
+          <span className="h-[1px] w-5 bg-brand-charcoal/30" />
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-charcoal leading-none mb-2">
-          PIJAMAS MI ÁNGEL
+        <h1 className="font-cutie text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-charcoal leading-tight mb-2">
+          Pijamas Mi Ángel
         </h1>
 
-        <p className="font-sans text-xs uppercase tracking-widest text-brand-charcoal/80 font-semibold mb-3">
-          Fabricantes • Confección & Venta Mayorista
+        <p className="font-sans text-xs uppercase tracking-widest text-brand-charcoal/80 font-bold mb-4">
+          Confección & Venta Mayorista • Colombia 🇨🇴
         </p>
       </motion.div>
 
-      {/* Characteristic Badges from Canva instructions: RIB PREMIUM, TALLA U, S M L */}
+      {/* Sweet Pill Badges with spacious gaps */}
       <motion.div
         initial={{ y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.25, duration: 0.5 }}
-        className="flex flex-wrap items-center justify-center gap-2 max-w-sm"
+        className="flex flex-wrap items-center justify-center gap-2.5 max-w-sm"
       >
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase shadow-[0_2px_0_#1E1E1E]">
-          <Sparkles className="w-3 h-3 text-amber-500 fill-amber-400" />
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase shadow-[0_2px_0_#1E1E1E]">
+          <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
           Rib Premium
         </span>
 
-        <span className="px-3 py-1 rounded-full bg-brand-pinkSoft border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase shadow-[0_2px_0_#1E1E1E]">
+        <span className="px-3.5 py-1.5 rounded-full bg-brand-pinkSoft border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase shadow-[0_2px_0_#1E1E1E]">
           Talla U
         </span>
 
-        <span className="px-3 py-1 rounded-full bg-brand-neutral border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase shadow-[0_2px_0_#1E1E1E]">
+        <span className="px-3.5 py-1.5 rounded-full bg-brand-neutral border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase shadow-[0_2px_0_#1E1E1E]">
           S • M • L
         </span>
 
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-brand-charcoal text-[10px] font-sans font-extrabold tracking-wider uppercase text-emerald-900 shadow-[0_2px_0_#1E1E1E]">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-brand-charcoal text-[11px] font-sans font-extrabold tracking-wider uppercase text-emerald-900 shadow-[0_2px_0_#1E1E1E]">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
           Envíos Nacionales
         </span>

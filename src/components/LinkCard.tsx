@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { playTapSound } from "@/lib/sound";
 import {
-  ExternalLink,
   Sparkles,
   ShoppingBag,
   Video,
@@ -43,7 +42,7 @@ export default function LinkCard({ link, index }: LinkCardProps) {
     const y = (rect.top + rect.height / 2) / window.innerHeight;
 
     confetti({
-      particleCount: link.highlight ? 45 : 28,
+      particleCount: link.highlight ? 45 : 30,
       spread: 60,
       origin: { x, y },
       colors: ["#FDE2E8", "#FCE4EC", "#5C7A3E", "#1E1E1E", "#D4AF37", "#FFFFFF"],
@@ -63,7 +62,6 @@ export default function LinkCard({ link, index }: LinkCardProps) {
         return <MessageCircle className="w-5 h-5 text-brand-charcoal" />;
       case "tiktok":
         return (
-          // TikTok custom musical note icon
           <svg
             className="w-5 h-5 text-brand-charcoal fill-current"
             viewBox="0 0 24 24"
@@ -91,12 +89,12 @@ export default function LinkCard({ link, index }: LinkCardProps) {
     >
       {/* Top Floating Badge if highlighted */}
       {link.badge && (
-        <div className="absolute -top-3 left-6 z-20">
+        <div className="absolute -top-3.5 left-6 z-20">
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-            className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[10px] font-sans font-black tracking-widest uppercase border-[1.5px] border-brand-charcoal shadow-[0_2px_0_#1E1E1E] ${
+            className={`inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] font-sans font-black tracking-widest uppercase border-[1.5px] border-brand-charcoal shadow-[0_2px_0_#1E1E1E] ${
               link.highlight
                 ? "bg-brand-foliage text-white"
                 : link.iconType === "whatsapp"
@@ -116,7 +114,7 @@ export default function LinkCard({ link, index }: LinkCardProps) {
         </div>
       )}
 
-      {/* Main Link Button Pill */}
+      {/* Main Link Button Pill with spacious padding and cutie typography */}
       <motion.a
         href={link.url}
         target="_blank"
@@ -124,7 +122,7 @@ export default function LinkCard({ link, index }: LinkCardProps) {
         onClick={handleClick}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className={`group relative block w-full rounded-2xl sm:rounded-3xl p-4 sm:p-5 border-2 border-brand-charcoal transition-all duration-200 overflow-hidden ${
+        className={`group relative block w-full rounded-[26px] p-5 sm:p-6 border-2 border-brand-charcoal transition-all duration-200 overflow-hidden ${
           link.highlight
             ? "bg-white shadow-[0_6px_0_#1E1E1E] hover:shadow-[0_8px_0_#1E1E1E] active:shadow-[0_2px_0_#1E1E1E] active:translate-y-1"
             : "bg-white/95 backdrop-blur-sm shadow-[0_5px_0_#1E1E1E] hover:shadow-[0_7px_0_#1E1E1E] active:shadow-[0_2px_0_#1E1E1E] active:translate-y-1"
@@ -138,10 +136,10 @@ export default function LinkCard({ link, index }: LinkCardProps) {
           <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-brand-pinkSoft/60 to-transparent rounded-bl-full pointer-events-none" />
         )}
 
-        <div className="relative flex items-center gap-3.5 sm:gap-4">
+        <div className="relative flex items-center gap-4 sm:gap-5">
           {/* Icon Box with styled border */}
           <div
-            className={`flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center border-2 border-brand-charcoal shadow-[0_3px_0_#1E1E1E] transition-transform duration-300 group-hover:rotate-6 ${
+            className={`flex-shrink-0 w-13 h-13 sm:w-14 sm:h-14 p-3 rounded-2xl flex items-center justify-center border-2 border-brand-charcoal shadow-[0_3px_0_#1E1E1E] transition-transform duration-300 group-hover:rotate-6 ${
               link.highlight
                 ? "bg-brand-pink"
                 : link.iconType === "whatsapp"
@@ -154,23 +152,23 @@ export default function LinkCard({ link, index }: LinkCardProps) {
             {renderIcon()}
           </div>
 
-          {/* Text Content */}
+          {/* Text Content with sweet cutie font */}
           <div className="flex-1 min-w-0 text-left">
-            <h2 className="font-serif text-lg sm:text-xl font-bold tracking-tight text-brand-charcoal leading-snug group-hover:text-brand-foliage transition-colors">
+            <h2 className="font-cutie text-lg sm:text-[20px] font-bold tracking-tight text-brand-charcoal leading-snug group-hover:text-brand-foliage transition-colors">
               {link.title}
             </h2>
 
-            <p className="font-sans text-[11px] sm:text-xs text-brand-charcoal/75 line-clamp-1 mt-0.5 font-medium tracking-wide">
+            <p className="font-sans text-xs text-brand-charcoal/75 line-clamp-1 mt-1 font-semibold tracking-wide">
               {link.subtitle}
             </p>
 
             {/* Micro Tags */}
             {link.tags && link.tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 mt-2">
+              <div className="flex flex-wrap gap-2 mt-2.5">
                 {link.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="inline-block px-2 py-0.5 rounded-md bg-brand-pink/50 text-[10px] font-sans font-bold uppercase tracking-wider text-brand-charcoal border border-brand-charcoal/30"
+                    className="inline-block px-2.5 py-0.5 rounded-full bg-brand-pinkSoft text-[10px] font-sans font-bold uppercase tracking-wider text-brand-charcoal border border-brand-charcoal/25"
                   >
                     {tag}
                   </span>
