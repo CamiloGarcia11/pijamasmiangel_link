@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FDE2E8;
+  --foreground: #1E1E1E;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FDE2E8;
+}
+
+body {
+  color: #1E1E1E;
+  background-color: #FDE2E8;
+  font-family: var(--font-montserrat), sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Custom shimmer effect */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #1E1E1E 0%,
+    #5C7A3E 50%,
+    #1E1E1E 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.shimmer-badge {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Glassmorphism styling */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid #1E1E1E;
+  box-shadow: 0 4px 0 #1E1E1E, 0 10px 25px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #1E1E1E, 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.glass-pill:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #1E1E1E;
+}
+
+/* Floating leaf / particle animation */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.9);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-25px) rotate(15deg) scale(1.05);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(0.9);
+    opacity: 0.2;
+  }
+}
+
+.floating-particle {
+  animation: floatParticle 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FDE2E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #EBE8E3;
+  border-radius: 9999px;
+  border: 1px solid #1E1E1E;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5C7A3E;
+}
