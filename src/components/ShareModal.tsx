@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Copy, Check, Share2, Sparkles, QrCode } from "lucide-react";
+import { X, Copy, Check, Share2, QrCode } from "lucide-react";
 import Image from "next/image";
 
 interface ShareModalProps {
@@ -29,7 +29,7 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
       try {
         await navigator.share({
           title: "Pijamas Mi Ángel PR",
-          text: "¡Descubre la nueva colección de pijamas Rib Premium y nuestro catálogo mayorista! 💖",
+          text: "¡Descubre la nueva colección Sweet Dreams de Pijamas Mi Ángel y catálogo mayorista! ✨",
           url: window.location.href,
         });
       } catch {
@@ -50,58 +50,53 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-brand-charcoal/40 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ scale: 0.92, opacity: 0, y: 20 }}
+            initial={{ scale: 0.94, opacity: 0, y: 16 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.92, opacity: 0, y: 20 }}
+            exit={{ scale: 0.94, opacity: 0, y: 16 }}
             transition={{ type: "spring", damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-sm rounded-3xl bg-white border-2 border-brand-charcoal p-6 shadow-[0_12px_0_#1E1E1E] z-10 text-brand-charcoal"
+            className="relative w-full max-w-sm rounded-[28px] bg-[#FCF6F2] border border-[#EFE5E0] p-6 shadow-[0_16px_40px_rgba(140,100,100,0.2)] z-10 text-[#241D1E]"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
               aria-label="Cerrar modal"
-              className="absolute top-4 right-4 p-2 rounded-full border border-brand-charcoal/20 hover:bg-brand-pink/60 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full border border-[#E8DDD4] hover:bg-white text-[#7A6C66] transition-colors"
             >
-              <X className="w-5 h-5 text-brand-charcoal" />
+              <X className="w-4 h-4" />
             </button>
 
             {/* Header */}
             <div className="text-center mt-1 mb-5">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-pink border-2 border-brand-charcoal mb-3 shadow-[0_3px_0_#1E1E1E]">
-                <QrCode className="w-7 h-7 text-brand-charcoal" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#FAF3EE] border border-[#E8DDD4] mb-2 shadow-sm text-brand-wine">
+                <QrCode className="w-6 h-6 text-[#813544]" />
               </div>
-              <h3 className="font-serif text-2xl font-bold tracking-tight">
+              <h3 className="font-serif text-2xl font-normal text-[#813544] tracking-tight">
                 Compartir Perfil
               </h3>
-              <p className="text-xs uppercase font-sans tracking-widest text-brand-charcoal/70 mt-1 font-semibold">
+              <p className="text-[10.5px] uppercase font-sans tracking-[0.2em] text-[#786D70] mt-1 font-semibold">
                 Pijamas Mi Ángel PR
               </p>
             </div>
 
             {/* QR Code Graphic Box */}
-            <div className="flex flex-col items-center justify-center p-4 rounded-2xl bg-brand-pinkSoft/60 border border-brand-charcoal/20 mb-5">
-              <div className="relative w-44 h-44 bg-white p-3 rounded-xl border-2 border-brand-charcoal flex items-center justify-center shadow-inner">
-                {/* Visual SVG QR representation */}
+            <div className="flex flex-col items-center justify-center p-4 rounded-[20px] bg-[#FAF3EE] border border-[#E8DDD4] mb-4">
+              <div className="relative w-40 h-40 bg-white p-3 rounded-2xl border border-[#E8DDD4] flex items-center justify-center shadow-sm">
                 <svg
                   viewBox="0 0 100 100"
-                  className="w-full h-full text-brand-charcoal"
+                  className="w-full h-full text-[#382D30]"
                   fill="currentColor"
                 >
-                  {/* Outer corner top-left */}
-                  <rect x="10" y="10" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="3" fill="none" />
+                  <rect x="10" y="10" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
                   <rect x="16" y="16" width="12" height="12" rx="1.5" />
-                  {/* Outer corner top-right */}
-                  <rect x="66" y="10" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="3" fill="none" />
+                  <rect x="66" y="10" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
                   <rect x="72" y="16" width="12" height="12" rx="1.5" />
-                  {/* Outer corner bottom-left */}
-                  <rect x="10" y="66" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="3" fill="none" />
+                  <rect x="10" y="66" width="24" height="24" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
                   <rect x="16" y="72" width="12" height="12" rx="1.5" />
-                  {/* Data patterns */}
                   <rect x="42" y="12" width="5" height="10" />
                   <rect x="52" y="15" width="6" height="5" />
                   <rect x="42" y="26" width="10" height="5" />
@@ -121,9 +116,9 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
 
                 {/* Central mini logo emblem */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-white border-2 border-brand-charcoal flex items-center justify-center shadow-md overflow-hidden">
+                  <div className="w-9 h-9 rounded-full bg-white border border-[#E8DDD4] flex items-center justify-center shadow-md overflow-hidden p-1">
                     <Image
-                      src="/logo.png"
+                      src="/luxury-logo.png"
                       alt="Logo A"
                       width={28}
                       height={28}
@@ -132,36 +127,36 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
                   </div>
                 </div>
               </div>
-              <span className="text-[11px] font-sans uppercase font-bold tracking-wider text-brand-charcoal/80 mt-2.5">
-                Escanea para abrir en el móvil 📱
+              <span className="text-[10px] font-sans uppercase font-medium tracking-wider text-[#8A7B74] mt-2">
+                Escanea para abrir en el celular 📱
               </span>
             </div>
 
             {/* Actions */}
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-2">
               <button
                 onClick={handleCopy}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-brand-charcoal text-white font-sans text-xs uppercase font-bold tracking-wider border-2 border-brand-charcoal shadow-[0_3px_0_#5C7A3E] active:translate-y-0.5 active:shadow-none transition-all"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#813544] hover:bg-[#6D2B38] text-white font-sans text-xs uppercase font-medium tracking-wider transition-all shadow-sm"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-green-400" />
-                    <span>¡Enlace Copiado al Portapapeles!</span>
+                    <Check className="w-4 h-4 text-emerald-300" />
+                    <span>¡Enlace Copiado!</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    <span>Copiar Enlace Directo</span>
+                    <span>Copiar Enlace</span>
                   </>
                 )}
               </button>
 
               <button
                 onClick={handleNativeShare}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-brand-pink border-2 border-brand-charcoal text-brand-charcoal font-sans text-xs uppercase font-bold tracking-wider hover:bg-brand-pinkSoft transition-colors shadow-[0_3px_0_#1E1E1E] active:translate-y-0.5 active:shadow-none"
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white hover:bg-[#FAF3EE] border border-[#E8DDD4] text-[#3B2F2A] font-sans text-xs uppercase font-medium tracking-wider transition-colors shadow-sm"
               >
-                <Share2 className="w-4 h-4" />
-                <span>Compartir en Redes</span>
+                <Share2 className="w-4 h-4 text-brand-wine" />
+                <span>Compartir</span>
               </button>
             </div>
           </motion.div>

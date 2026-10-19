@@ -3,41 +3,49 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Sparkles, Heart } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Slide {
   id: number;
   image: string;
-  tag: string;
+  badge: string;
   title: string;
   subtitle: string;
-  badgeEmoji: string;
+  hasEmbeddedText?: boolean;
 }
 
 const SLIDES: Slide[] = [
   {
     id: 1,
-    image: "/carousel/pijama-2.webp",
-    tag: "TELA RIB ACANALADA",
-    title: "Detalle de Confección & Lazos",
-    subtitle: "Estampado de corazones blancos y textura rib acanalada suave",
-    badgeEmoji: "🧵",
+    image: "/carousel/carousel-sweet-dreams.jpg",
+    badge: "CONJUNTO 2 PIEZAS",
+    title: "Top Corto Manga",
+    subtitle: "Estampado botánico pastel, lazo decorativo y terminaciones onduladas.",
+    hasEmbeddedText: true,
   },
   {
     id: 2,
-    image: "/carousel/pijama-1.webp",
-    tag: "CONJUNTO 2 PIEZAS",
-    title: "Top Corto Manga Corta & Short",
-    subtitle: "Estampado botánico pastel, lazo decorativo y terminaciones onduladas",
-    badgeEmoji: "✨",
+    image: "/carousel/pijama-2.webp",
+    badge: "TELA RIB ACANALADA",
+    title: "Detalle de Confección & Lazos",
+    subtitle: "Estampado de corazones blancos y textura rib acanalada suave.",
+    hasEmbeddedText: false,
   },
   {
     id: 3,
+    image: "/carousel/pijama-1.webp",
+    badge: "CONJUNTO 2 PIEZAS",
+    title: "Top Corto Manga Corta & Short",
+    subtitle: "Estampado botánico pastel con lazo y terminaciones onduladas.",
+    hasEmbeddedText: false,
+  },
+  {
+    id: 4,
     image: "/carousel/pijama-3.webp",
-    tag: "CONJUNTO 2 PIEZAS",
+    badge: "CONJUNTO 2 PIEZAS",
     title: "Camiseta Manga Corta & Short",
-    subtitle: "Estampado de ositos pastel con lazo en cuello y pretina",
-    badgeEmoji: "🧸",
+    subtitle: "Estampado de ositos pastel con lazo decorativo en pretina.",
+    hasEmbeddedText: false,
   },
 ];
 
@@ -60,7 +68,7 @@ export default function PhotoCarousel() {
     if (isPaused) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 3800);
+    }, 4500);
     return () => clearInterval(timer);
   }, [isPaused, nextSlide]);
 
@@ -68,9 +76,9 @@ export default function PhotoCarousel() {
 
   const slideVariants = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 80 : -80,
+      x: dir > 0 ? 60 : -60,
       opacity: 0,
-      scale: 0.96,
+      scale: 0.98,
     }),
     center: {
       x: 0,
@@ -78,9 +86,9 @@ export default function PhotoCarousel() {
       scale: 1,
     },
     exit: (dir: number) => ({
-      x: dir > 0 ? -80 : 80,
+      x: dir > 0 ? -60 : 60,
       opacity: 0,
-      scale: 0.96,
+      scale: 0.98,
     }),
   };
 
@@ -92,8 +100,8 @@ export default function PhotoCarousel() {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      {/* Outer Aesthetic Frame */}
-      <div className="relative w-full h-[290px] sm:h-[320px] rounded-3xl bg-white border-2 border-brand-charcoal shadow-[0_8px_0_#1E1E1E] overflow-hidden group">
+      {/* Outer Luxury Card Frame */}
+      <div className="relative w-full h-[300px] sm:h-[330px] rounded-[28px] bg-white border border-[#EFE5E0] shadow-[0_8px_24px_-6px_rgba(160,120,120,0.14)] overflow-hidden group">
         {/* Animated Slide Content */}
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -103,64 +111,63 @@ export default function PhotoCarousel() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 0.55, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
           >
             <Image
               src={currentSlide.image}
               alt={currentSlide.title}
               fill
-              priority
+              priority={currentIndex === 0}
               sizes="(max-width: 768px) 100vw, 480px"
               className="object-cover object-center"
             />
 
-            {/* Aesthetic Gradient Shadow at the bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/15 to-transparent pointer-events-none" />
+            {/* If slide does not have embedded text, render luxury gradient and text */}
+            {!currentSlide.hasEmbeddedText && (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/30 to-transparent pointer-events-none" />
 
-            {/* Top Cutie Ribbon Badge */}
-            <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1.5">
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border-[1.5px] border-brand-charcoal text-[11px] font-sans font-extrabold uppercase tracking-wider text-brand-charcoal shadow-[0_2px_0_#1E1E1E]">
-                <span>{currentSlide.badgeEmoji}</span>
-                <span>{currentSlide.tag}</span>
-              </span>
-            </div>
+                {/* Top-left Pill Badge */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="px-3.5 py-1 rounded-full bg-[#FCE3E7]/95 backdrop-blur-sm border border-[#F3CDD5] text-[#332225] font-sans font-semibold text-[10.5px] uppercase tracking-wider shadow-sm">
+                    {currentSlide.badge}
+                  </span>
+                </div>
 
-            {/* Bottom Caption Pill */}
-            <div className="absolute bottom-4 left-4 right-4 z-10 text-left">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-brand-pink/90 border border-brand-charcoal/30 text-[10px] font-sans font-bold uppercase tracking-wider text-brand-charcoal mb-1">
-                <Sparkles className="w-3 h-3 text-amber-500 fill-amber-400" />
-                <span>Prenda Real</span>
-              </div>
-              <h3 className="font-cutie text-lg sm:text-xl font-bold text-white drop-shadow-md leading-tight">
-                {currentSlide.title}
-              </h3>
-              <p className="font-sans text-xs text-white/90 drop-shadow font-medium tracking-wide">
-                {currentSlide.subtitle}
-              </p>
-            </div>
+                {/* Bottom Caption */}
+                <div className="absolute bottom-5 left-5 right-5 z-10 text-left">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#241D1E] leading-tight mb-1">
+                    {currentSlide.title}
+                  </h3>
+                  <p className="font-sans text-xs text-[#524649] font-normal leading-relaxed max-w-[270px]">
+                    {currentSlide.subtitle}
+                  </p>
+                </div>
+              </>
+            )}
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation Arrows (Discreet, Cute & Clean) */}
+        {/* Navigation Arrows: Translucent White Circles */}
         <button
           onClick={prevSlide}
           aria-label="Foto anterior"
-          className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 border border-brand-charcoal text-brand-charcoal flex items-center justify-center opacity-85 hover:opacity-100 shadow-[0_2px_0_#1E1E1E] transition-all active:scale-95"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/85 hover:bg-white text-[#2A2426] backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.12)] flex items-center justify-center transition-all active:scale-95"
         >
-          <ChevronLeft className="w-4 h-4" />
+          <ChevronLeft className="w-4 h-4 text-[#2A2426]" />
         </button>
 
         <button
           onClick={nextSlide}
           aria-label="Siguiente foto"
-          className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/90 border border-brand-charcoal text-brand-charcoal flex items-center justify-center opacity-85 hover:opacity-100 shadow-[0_2px_0_#1E1E1E] transition-all active:scale-95"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/85 hover:bg-white text-[#2A2426] backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.12)] flex items-center justify-center transition-all active:scale-95"
         >
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-4 h-4 text-[#2A2426]" />
         </button>
 
-        {/* Cute Navigation Dots / Pill Indicators */}
-        <div className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 bg-brand-charcoal/50 backdrop-blur-md py-1 px-2 rounded-full border border-white/30">
+        {/* Carousel Indicator Dots at Bottom Center */}
+        <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
           {SLIDES.map((_, idx) => (
             <button
               key={idx}
@@ -171,8 +178,8 @@ export default function PhotoCarousel() {
               aria-label={`Ir a foto ${idx + 1}`}
               className={`h-2 rounded-full transition-all duration-300 ${
                 idx === currentIndex
-                  ? "w-5 bg-brand-pink border border-white"
-                  : "w-2 bg-white/60 hover:bg-white"
+                  ? "w-2.5 bg-[#A74D5E]"
+                  : "w-2 bg-white/80 hover:bg-white shadow-sm"
               }`}
             />
           ))}
