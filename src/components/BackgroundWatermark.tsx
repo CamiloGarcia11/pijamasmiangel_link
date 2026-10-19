@@ -124,7 +124,7 @@ export default function BackgroundWatermark() {
           className="relative w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] md:w-[560px] md:h-[560px] select-none"
         >
           <Image
-            src="/logo-watermark.png"
+            src="/logo-watermark.webp"
             alt="Pijamas Mi Ángel PR Watermark"
             fill
             sizes="(max-width: 768px) 380px, 560px"

@@ -40,7 +40,7 @@ export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
         >
           <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center p-1 sm:p-2">
             <Image
-              src="/logo-prominent.png"
+              src="/logo-prominent.webp"
               alt="Logo Pijamas Mi Ángel PR"
               fill
               sizes="(max-width: 768px) 176px, 176px"
