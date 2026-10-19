@@ -26,25 +26,25 @@ export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
         </motion.button>
       </div>
 
-      {/* Profile Avatar with double ring and sweet breathing animation */}
-      <div className="relative mb-3">
+      {/* Prominent Profile Avatar: Large, Crisp, and Noteworthy */}
+      <div className="relative mb-3.5">
         {/* Pulsing ambient halo ring */}
-        <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-brand-pinkMuted via-white to-brand-pinkSoft opacity-85 blur-md animate-pulse-subtle" />
+        <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-brand-pinkMuted via-white to-brand-pinkSoft opacity-85 blur-lg animate-pulse-subtle" />
 
         <motion.div
           initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", damping: 18, stiffness: 220 }}
-          whileHover={{ scale: 1.04, rotate: 1.5 }}
-          className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white border-[2.5px] border-brand-charcoal shadow-[0_5px_0_#1E1E1E] p-1.5 flex items-center justify-center overflow-hidden"
+          whileHover={{ scale: 1.04, rotate: 1 }}
+          className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-white border-[3px] border-brand-charcoal shadow-[0_6px_0_#1E1E1E] p-1.5 flex items-center justify-center overflow-hidden"
         >
-          <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
+          <div className="relative w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center p-1 sm:p-2">
             <Image
-              src="/logo.png"
+              src="/logo-prominent.png"
               alt="Logo Pijamas Mi Ángel PR"
               fill
-              sizes="(max-width: 768px) 128px, 128px"
-              className="object-contain p-2"
+              sizes="(max-width: 768px) 176px, 176px"
+              className="object-contain p-1"
               priority
             />
           </div>
@@ -55,7 +55,7 @@ export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.35, type: "spring", stiffness: 400 }}
-          className="absolute bottom-0 right-1 bg-brand-charcoal text-white p-1 rounded-full border-2 border-white shadow-md flex items-center justify-center"
+          className="absolute bottom-1 right-2 bg-brand-charcoal text-white p-1.5 rounded-full border-2 border-white shadow-md flex items-center justify-center"
           title="Marca Verificada"
         >
           <CheckCircle className="w-4 h-4 text-emerald-400 fill-emerald-400" />
@@ -72,7 +72,7 @@ export default function HeaderProfile({ onOpenShare }: HeaderProfileProps) {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute -top-1 -left-2 bg-white text-rose-500 p-1.5 rounded-full border border-brand-charcoal shadow-[0_2px_0_#1E1E1E] text-xs flex items-center justify-center"
+          className="absolute -top-1 -left-1 bg-white text-rose-500 p-1.5 rounded-full border border-brand-charcoal shadow-[0_2px_0_#1E1E1E] text-sm flex items-center justify-center"
         >
           🎀
         </motion.div>
