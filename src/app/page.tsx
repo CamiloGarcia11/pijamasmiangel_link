@@ -28,6 +28,7 @@ const LINKS_DATA: LinkItem[] = [
     highlight: true,
     tags: ["Respuesta Rápida", "Despachos"],
     iconType: "whatsapp",
+    imagePreview: "/carousel/pijama-1.webp",
   },
   {
     id: "canal-vip",
@@ -38,6 +39,7 @@ const LINKS_DATA: LinkItem[] = [
     highlight: false,
     tags: ["Contenido Diario", "Videos Reales"],
     iconType: "channel",
+    imagePreview: "/carousel/pijama-2.webp",
   },
   {
     id: "catalogo-mayorista",
@@ -48,6 +50,7 @@ const LINKS_DATA: LinkItem[] = [
     highlight: false,
     tags: ["Rib Premium", "Talla U", "S • M • L"],
     iconType: "catalog",
+    imagePreview: "/carousel/pijama-3.webp",
   },
   {
     id: "tiktok-oficial",
@@ -58,6 +61,7 @@ const LINKS_DATA: LinkItem[] = [
     highlight: false,
     tags: ["@pijamas_miangelpr", "Tendencias"],
     iconType: "tiktok",
+    imagePreview: "/carousel/pijama-1.webp",
   },
 ];
 
